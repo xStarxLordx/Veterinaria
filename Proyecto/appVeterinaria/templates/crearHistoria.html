@@ -1,0 +1,204 @@
+<!--
+=========================================================
+* Material Dashboard 2 - v3.0.5
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/material-dashboard
+* Copyright 2023 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://www.creative-tim.com/license)
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+-->
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="apple-touch-icon" sizes="76x76" href='{% static "img/apple-icon.png" %}'>
+  <link rel="icon" type="image/png" href='{% static "img/favicon.png" %}'>
+  <title>
+    Crear Historia
+  </title>
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+  <!-- Nucleo Icons -->
+  <link href='{% static "css/nucleo-icons.css"%}' rel="stylesheet" />
+  <link href='{% static "css/nucleo-svg.css" %}'rel="stylesheet" />
+  <!-- Font Awesome Icons -->
+  <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+  <!-- Material Icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <!-- CSS Files -->
+  <link id="pagestyle" href='{% static "css/material-dashboard.css"%}' rel="stylesheet" />
+  <!-- Nepcha Analytics (nepcha.com) -->
+  <!-- Nepcha is a easy-to-use web analytics. No cookies and fully compliant with GDPR, CCPA and PECR. -->
+  <script defer data-site="YOUR_DOMAIN_HERE" src="https://api.nepcha.com/js/nepcha-analytics.js"></script>
+</head>
+
+<body class="">
+  <div class="container position-sticky z-index-sticky top-0">
+    <div class="row">
+      <div class="col-12">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg blur border-radius-lg top-0 z-index-3 shadow position-absolute mt-4 py-2 start-14 end-14 mx-1">
+          <div class="container-fluid ps-0 pe-0">
+                <span class="navbar-toggler-bar bar1"></span>
+                <span class="navbar-toggler-bar bar2"></span>
+                <span class="navbar-toggler-bar bar3"></span>
+              </span>
+            </button>
+            <div class="collapse navbar-collapse" id="navigation">
+              <ul class="navbar-nav mx-auto">
+                
+                <li class="nav-item">
+                  <a class="nav-link me-2" href="http://localhost:8000/inicioVet/{{veterinario.user}}">
+                    <i class="fa fa-user opacity-6 text-dark me-1"></i>
+                    Inicio
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link me-2" href="http://localhost:8000/iniciarSesion/">
+                    <i class="fas fa-key opacity-6 text-dark me-1"></i>
+                    Inicio de sesion
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </div>
+          </div>
+        </nav>
+        <!-- End Navbar -->
+      </div>
+    </div>
+  </div>
+  <main class="main-content  mt-0">
+    <section>
+      <div class="page-header min-vh-100">
+        <div class="container">
+          <div class="row">
+            <div class="col-6 d-lg-flex d-none h-100 my-auto pe-0 position-absolute top-0 start-0 text-center justify-content-center flex-column">
+              <div class="position-relative bg-gradient-primary h-100 m-3 px-7 border-radius-lg d-flex flex-column justify-content-center">
+                
+                {% if mensaje != None %}
+                {% if mensaje == True %}
+                  <h1 style = "color: #00c811;">REGISTRO EXISTOSO</h1>
+                  
+                {% else %}
+                <h1 style = "color: #ff0000;">REGISTRO FALLIDO</h1>
+                {% endif %}
+                {% endif %}
+               
+              </div>
+            </div>
+            <div class="col-xl-4 col-lg-5 col-md-7 d-flex flex-column ms-auto me-auto ms-lg-auto me-lg-5">
+              <div class="card card-plain">
+                <div class="card-header">
+                  <h4 class="font-weight-bolder">Historia Clínica:</h4>
+                  
+                  <p class="mb-0"></p>
+                </div>
+                <div class="card-body">
+                  
+                  <form role="form" action="/nuevaHistoria/" method="GET">
+                    <h6>Cédula Veterinario:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="number" class="form-control" name="cedula_veterinario" value="{{veterinario.cedula}}" readonly>
+                    </div>
+                    <h6>ID Orden:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="number" class="form-control" name="id_orden"  >
+                    </div>
+                    <h6>ID Mascota:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="id_mascota" required>
+                    </div>
+                    <h6>Motivo:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="motivo" required>
+                    </div>
+                    <h6>Sintomas:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="sintomas" required>
+                    </div>
+                    <h6>Diagnóstico:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="diagnostico" required>
+                    </div>
+                    <h6>Procedimiento:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="procedimiento" required>
+                    </div>
+                    <h6>Medicamento:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="nombre_medicamento" required>
+                    </div>
+                    <h6>Vacunas:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="vacunas" required>
+                    </div>
+                    <h6>Alergias:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="alergias" required>
+                    </div>
+                    <h6>Detalles:</h6>
+                    <div class="input-group input-group-outline mb-3">
+                      <label class="form-label"></label>
+                      <input type="text" class="form-control" name="detalles" required>
+                    </div>
+                    
+                    <div class="text-center">
+                      <button type="submit" class="btn btn-lg bg-gradient-primary btn-lg w-100 mt-4 mb-0">Aceptar</button>
+                    </div>
+                  </form>
+                </div>
+                <div class="card-footer text-center pt-0 px-lg-2 px-1">
+                  
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+  </main>
+  <!--   Core JS Files   -->
+  <script src='{% static "js/core/popper.min.js" %}'></script>
+  <script src='{% static "js/core/bootstrap.min.js" %}'></script>
+  <script src='{% static "js/plugins/perfect-scrollbar.min.js" %}'></script>
+  <script src='{% static "js/plugins/smooth-scrollbar.min.js" %}'></script>
+  <script>
+    var win = navigator.platform.indexOf('Win') > -1;
+    if (win && document.querySelector('#sidenav-scrollbar')) {
+      var options = {
+        damping: '0.5'
+      }
+      Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
+    }
+  </script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src='{% static "js/material-dashboard.min.js" %}'></script>
+  
+ 
+</body>
+
+</html>
